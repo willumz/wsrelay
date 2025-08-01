@@ -91,7 +91,7 @@ func handleConnection(w http.ResponseWriter, r *http.Request) {
 	// Retrieve data and create store client
 	groupId := checkAuth(r)
 	if groupId == "" {
-		conn.WriteMessage(websocket.CloseMessage, websocket.FormatCloseMessage(websocket.CloseNormalClosure, "Forbidden"))
+		conn.WriteMessage(websocket.CloseMessage, []byte("Forbidden"))
 		return
 	}
 	connId := storeConn(conn, groupId)
